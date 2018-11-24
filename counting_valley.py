@@ -71,6 +71,9 @@ import sys
 def counting_valleys(n, s):
     sea_level, can_count, valley_count = (0, True, 0)
     for step in s:
+        # sea_level > 0 represent above sea level
+        # sea_level = 0 represent at sea level
+        # sea_level < 0 represent below sea level
         sea_level += 1 if step == 'U' else -1
 
         if sea_level < 0 and can_count:
