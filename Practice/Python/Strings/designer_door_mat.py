@@ -83,6 +83,5 @@ def design(n, m):
 
 
 if __name__ == '__main__':
-    # N, M = map(int, input().strip().split())
-    N, M = (11, 33)
+    N, M = map(int, input().strip().split())
     design(N, M)
