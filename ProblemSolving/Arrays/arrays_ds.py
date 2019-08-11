@@ -31,6 +31,16 @@ Sample Output:
 
 # Solution:
 
+# Reversing using recursion
+def reverse_array_recursion(a):
+    try:
+        char = a[0]
+        reverse_array_recursion(a[1:])
+        print(char, end=' ')
+    except IndexError:
+        return
+
+
 # Complete the reverseArray function below.
 def reverse_array(a):
     return a[::-1]
@@ -42,5 +52,8 @@ if __name__ == '__main__':
     arr = list(map(int, input("Enter the array elements: ").rstrip().split()))
 
     res = reverse_array(arr)
+
+    # Reversing using recursion
+    reverse_array_recursion(arr)
 
     print("Reverse order of array is: ", res)

@@ -61,35 +61,78 @@ Explanation:
     The required answer will be 200.
 """
 
-
 # Solution:
+import datetime
+
+
+class Limits:
+    def __init__(self, low, high, total=None):
+        self.low = low
+        self.high = high
+        self.total = total
+
+    def update_total(self, val):
+        if self.total:
+            self.total += val
+        else:
+            self.total = val
+
+    def matches_lower_limit(self, low_limit):
+        return self.low == low_limit
+
+    def matches_upper_limit(self, upper_limit):
+        return self.high == upper_limit
+
+
+def yield_queries(queries):
+    for query in queries:
+        yield query
 
 
 # Complete the arrayManipulation function below.
 def array_manipulation(n, queries):
-    narray = n * [0]
-    for a, b, k in queries:
-        for i in range(a - 1, b):
-            narray[i] += k
+    limits = []
+    for a, b, k in yield_queries(queries):
+        pass
 
-    return max(narray)
+
+# Complete the arrayManipulation function below.
+# def array_manipulation(n, queries):
+#     counter = {}
+#     for a, b, k in yield_queries(queries):
+#         for i in range(a, b + 1):
+#             try:
+#                 counter[i] += k
+#             except KeyError:
+#                 counter[i] = k
+#
+#         print(counter)
+#
+#     max_val = 0
+#     for val in counter.values():
+#         if val > max_val:
+#             max_val = val
+#
+#     return max_val
 
 
 if __name__ == '__main__':
 
-    nm = input("Enter the value of n, m: ").split()
+    # nm = input("Enter the value of n, m: ").split()
 
-    n = int(nm[0])
+    n = 10000000  # int(nm[0])
 
-    m = int(nm[1])
+    m = 100000  # int(nm[1])
 
     queries = []
 
-    with open(r'C:\HackerRank\test.txt', 'r') as f_:
-        for data in f_.readlines():  # range(m):
+    with open(r'C:\HackerRank\ProblemSolving\Arrays\test.txt', 'r') as f_:
+        for data in f_.readlines():
             queries.append(list(map(int, data.rstrip().split())))
-            print("Added data: ", data)
+            # print("Added data: ", data)
 
+    print("start time: ", datetime.datetime.now())
     result = array_manipulation(n, queries)
 
     print("Maximum value is: ", result)
+    print("end time: ", datetime.datetime.now())
